@@ -7,15 +7,16 @@ const CatalogItem = (props) => {
     sizes: []
   });
 
-  const loadData = () => {
-    fetch(`${process.env.REACT_APP_URL}api/items/${id}`)
-      .then((response) => response.json())
-      .then((result) => setGood(result));
-  };
+
 
   useEffect(() => {
+    const loadData = () => {
+      fetch(`${process.env.REACT_APP_URL}api/items/${id}`)
+        .then((response) => response.json())
+        .then((result) => setGood(result));
+    };
     loadData();
-  },[]);
+  },[id]);
 
   return (
     <section className="catalog-item">
