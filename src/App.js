@@ -6,6 +6,7 @@ import Main from './components/Main';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import NotFound from './components/NotFound';
+import CatalogItem from './components/CatalogItem';
 import './App.css';
 import banner from './img/banner.jpg';
 
@@ -22,7 +23,8 @@ function App() {
                           <h2 className="banner-header">К весне готовы!</h2>
                       </div>
                       <Switch>
-                        <Route path="/ra-diplom" component={Main} />
+                        <Route path={`/${process.env.REACT_APP_HOMEPAGE}`} component={Main} />
+                        <Route path="/products/:id" component={CatalogItem} />
                         <Route path="/about" component={About} />
                         <Route path="/contacts" component={Contacts} />
                         <Route exact path="/" component={Main} />
