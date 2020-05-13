@@ -7,6 +7,7 @@ import About from './components/About';
 import Contacts from './components/Contacts';
 import NotFound from './components/NotFound';
 import CatalogItem from './components/CatalogItem';
+import Catalog from './components/Catalog';
 import './App.css';
 import banner from './img/banner.jpg';
 
@@ -25,6 +26,7 @@ function App() {
                       <Switch>
                         <Route path={`/${process.env.REACT_APP_HOMEPAGE}`} component={Main} />
                         <Route path="/products/:id" component={CatalogItem} />
+                        <Route path="/catalog" component={Catalog} />
                         <Route path="/about" component={About} />
                         <Route path="/contacts" component={Contacts} />
                         <Route exact path="/" component={Main} />

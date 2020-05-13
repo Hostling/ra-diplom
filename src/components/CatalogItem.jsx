@@ -7,8 +7,6 @@ const CatalogItem = (props) => {
     sizes: []
   });
 
-
-
   useEffect(() => {
     const loadData = () => {
       fetch(`${process.env.REACT_APP_URL}api/items/${id}`)
