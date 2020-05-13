@@ -48,15 +48,36 @@ const Catalog = (props) => {
       .then((result) => setCatalogItems(result));
   };
 
+  const SearchForm = (props) => {
+    const [value, setValue] = useState({ value: "" });
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      fetch(`${process.env.REACT_APP_URL}api/items?q=${value.value}`)
+        .then((response) => response.json())
+        .then((result) => setCatalogItems(result));
+    };
+    const handleChange = (e) => {
+      setValue({ value: e.target.value });
+    };
+
+    return (
+      <form className="catalog-search-form form-inline" onSubmit={handleSubmit}>
+        <input
+          className="form-control"
+          value={value.value}
+          onChange={handleChange}
+          placeholder="Поиск"
+        />
+      </form>
+    );
+  };
+
   return (
     <section className="catalog">
       <h2 className="text-center">Каталог</h2>
 
-      {/*
-          <form className="catalog-search-form form-inline">
-              <input className="form-control" placeholder="Поиск" />
-          </form>
-          */}
+      {props.fromLink ? <SearchForm /> : null}
 
       <ul className="catalog-categories nav justify-content-center">
         {categories.cat.map((item, idx) => (
